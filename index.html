@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Just For You 🌸</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #fdecef, #f3f0ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 560px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      animation: fadeIn 0.6s ease;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .emoji {
+      font-size: 32px;
+      margin: 15px 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 12px 22px;
+      margin: 8px 6px;
+      font-size: 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #ec407a;
+      color: white;
+    }
+
+    .back {
+      background: #eee;
+    }
+
+    .hintBtn {
+      background: none;
+      text-decoration: underline;
+      color: #666;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      color: #e53935;
+      display: none;
+    }
+
+    .hintText {
+      color: #666;
+      display: none;
+    }
+
+    .flower {
+      font-size: 46px;
+      margin-top: 20px;
+      animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(10px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="card" id="login">
+  <h1>Welcome, Miss Thokozile Malufethe, soon to be Mrs.............😉 🌸</h1>
+  <div class="emoji">🔐✨</div>
+  <p>Some things are meant to be unlocked gently.</p>
+
+  <input type="password" id="password" placeholder="Password">
+
+  <button class="primary" onclick="checkPassword()">Unlock</button>
+  <br>
+  <button class="hintBtn" onclick="showHint()">Need a hint?</button>
+
+  <p class="error" id="error">Almost 😌</p>
+  <p class="hintText" id="hint">Think of your special day 🎂</p>
+</div>
+
+<!-- WELCOME -->
+<div class="card hidden" id="welcome">
+  <div class="emoji">🌸✨</div>
+  <h1>Hi you.</h1>
+  <p>This isn’t a question.</p>
+  <p>It’s just a quiet space I made for you.</p>
+  <p>Take your time 🤍</p>
+
+  <button class="primary" onclick="nextCard('card1')">Continue</button>
+</div>
+
+<!-- 1 -->
+<div class="card hidden" id="card1">
+  <div class="emoji">👀✨</div>
+  <p>Sometimes you notice someone…</p>
+  <p>and suddenly the world rearranges itself.</p>
+  <button class="primary" onclick="nextCard('card2')">Next</button>
+</div>
+
+<!-- 2 -->
+<div class="card hidden" id="card2">
+  <div class="emoji">📚🖤</div>
+  <p>Paying attention is a form of care.</p>
+  <p>Some people linger in your thoughts.</p>
+  <button class="back" onclick="nextCard('card1')">Back</button>
+  <button class="primary" onclick="nextCard('card3')">Next</button>
+</div>
+
+<!-- 3 IE -->
+<div class="card hidden" id="card3">
+  <div class="emoji">📊😉</div>
+  <p><strong>Are you a bottleneck?</strong></p>
+  <p>Because everything slows down when I notice you.</p>
+  <button class="back" onclick="nextCard('card2')">Back</button>
+  <button class="primary" onclick="nextCard('card4')">Next</button>
+</div>
+
+<!-- 4 Nerd -->
+<div class="card hidden" id="card4">
+  <div class="emoji">🧠❤️</div>
+  <p>
+    I would steal your panties and Tampons,<br>
+    but you’re not nerdy enough to understand that 😞
+  </p>
+  <button class="back" onclick="nextCard('card3')">Back</button>
+  <button class="primary" onclick="nextCard('card5')">Next</button>
+</div>
+
+<!-- 5 Lyrics -->
+<div class="card hidden" id="card5">
+  <div class="emoji">🎶🖼️</div>
+  <p><em>So pretty, girl, you belong in a gallery.</em></p>
+  <p><em>What’s your fantasy?</em></p>
+  <button class="back" onclick="nextCard('card4')">Back</button>
+  <button class="primary" onclick="nextCard('card6')">Next</button>
+</div>
+
+<!-- 6 Lyrics -->
+<div class="card hidden" id="card6">
+  <div class="emoji">🎧✨</div>
+  <p><em>Maybe I’m doing this wrong…</em></p>
+  <p><em>but it feels right to say it anyway.</em></p>
+  <button class="back" onclick="nextCard('card5')">Back</button>
+  <button class="primary" onclick="nextCard('card7')">Next</button>
+</div>
+
+<!-- 7 Crochet -->
+<div class="card hidden" id="card7">
+  <div class="emoji">🧶✨</div>
+  <p>You crochet the way some people love.</p>
+  <p>Patient. Intentional. Turning loose threads into something beautiful.</p>
+  <button class="back" onclick="nextCard('card6')">Back</button>
+  <button class="primary" onclick="nextCard('card8')">Next</button>
+</div>
+
+<!-- 8 Liverpool -->
+<div class="card hidden" id="card8">
+  <div class="emoji">⚽❤️</div>
+  <p>And just like Liverpool,</p>
+  <p>I would never let you walk alone.</p>
+  <button class="back" onclick="nextCard('card7')">Back</button>
+  <button class="primary" onclick="nextCard('card9')">Next</button>
+</div>
+
+<!-- 9 Supacell -->
+<div class="card hidden" id="card9">
+  <div class="emoji">⚡⏳</div>
+  <p>I would gather a group of random super humans,</p>
+  <p>travel back in time, and save your life.</p>
+  <p>Are you needy enough to understand that?</p>
+  <button class="back" onclick="nextCard('card8')">Back</button>
+  <button class="primary" onclick="nextCard('card10')">Next</button>
+</div>
+
+<!-- 10 Jackal -->
+<div class="card hidden" id="card10">
+  <div class="emoji">🕵🏽‍♂️🌙</div>
+  <p>
+    If the Jackal’s world is chaos, you’re my Bianca.<br>
+    <em>(I don’t know if this makes sense, I just wanted to add it 😭)</em>
+  </p>
+  <button class="back" onclick="nextCard('card9')">Back</button>
+  <button class="primary" onclick="nextCard('cardPreFinal')">Next</button>
+</div>
+
+<!-- PRE FINAL -->
+<div class="card hidden" id="cardPreFinal">
+  <div class="emoji">🌍🖤</div>
+  <p>There is not a line in this world</p>
+  <p>that I would cross for you.</p>
+  <button class="back" onclick="nextCard('card10')">Back</button>
+  <button class="primary" onclick="nextCard('card11')">Next</button>
+</div>
+
+<!-- FINAL -->
+<div class="card hidden" id="card11">
+  <h1>That’s all 🌸</h1>
+  <p>Not a question.</p>
+  <p>Just something small… meant to make you smile.</p>
+  <p><em>(And I coded this myself… okay maybe not, but let’s pretend I did 😭)</em></p>
+  <div class="flower">🌸</div>
+  <br>
+  <button class="back" onclick="nextCard('cardPreFinal')">Back</button>
+</div>
+
+<script>
+function checkPassword() {
+  const input = document.getElementById("password").value.trim().toLowerCase();
+  document.getElementById("error").style.display = "none";
+
+  if (input === "22march") {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("welcome").classList.remove("hidden");
+  } else {
+    document.getElementById("error").style.display = "block";
+  }
+}
+
+function showHint() {
+  document.getElementById("hint").style.display = "block";
+}
+
+function nextCard(id) {
+  document.querySelectorAll(".card").forEach(card => {
+    card.classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
